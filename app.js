@@ -17,6 +17,12 @@ app.post("/", (req, res)=>{
     res.render("main", {someData: req.body.someData})
 })
 
-app.listen(3000, ()=>{
-    console.log("Listening on 3000");
+let PORT = process.env.PORT;
+if(PORT==null || PORT == "")
+{
+    console.log("port not found in .env");
+    PORT = 5000
+}
+app.listen(PORT, ()=>{
+    console.log("Listening on port:", PORT);
 })
